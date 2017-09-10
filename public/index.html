@@ -1,0 +1,67 @@
+<!doctype html>
+<html ng-app="todoapp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TODO app</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="main.js"></script>
+
+    <script type="text/javascript" src="/js/bootstrap-datetimepicker.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css" />
+</head>
+
+<body ng-controller="mainController">
+    <div>
+        <div class="container">
+            <h2>{{formData.duedate}}</h2>
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" placeholder="Name" ng-model="formData.name">
+                </div>
+                <div class="form-group">
+                    <textarea class="form-control" rows="5"  placeholder="Description" ng-model="formData.description"></textarea>
+                </div>
+                <div class="form-group">
+                    <div class='input-group date' id='duedate'>
+                        <input type='text' class="form-control" placeholder="yyyy-mm-dd" ng-model="formData.duedate" data-date-time-picker/>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="number" min="0" class="form-control" placeholder="Priority" ng-model="formData.priority">
+                </div>
+                <button class="btn btn-primary btn-lg" ng-click="create()">Add</button>
+            </form>
+            <div class="checkbox" ng-repeat="todo in todos">
+                <label>
+                    <input type="checkbox" ng-click="delete(todo._id)" /> {{ todo.name }}
+                </label>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        /*$(function () {
+            var dtp = $('#duedate').datetimepicker({
+                format: 'YYYY-MM-DD'
+            });
+
+            dtp.on("dp.change", function (e) {
+                console.log(moment(e.date).format("YYYY-MM-DD"));
+                $('.datetimepicker').val(moment(e.date).format("YYYY-MM-DD"));
+            });
+        });*/
+    </script>
+
+</body>
+
+</html>
