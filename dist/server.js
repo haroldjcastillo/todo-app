@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
@@ -9,13 +11,14 @@ var options = {
     user: 'todo',
     pass: 't0d0',
     useMongoClient: true
-}
+};
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/tododb', options).then(
-    () => { console.log('Connect') },
-    err => { console.log('Connection error', err) }
-);
+mongoose.connect('mongodb://localhost:27017/tododb', options).then(function () {
+    console.log('Connect');
+}, function (err) {
+    console.log('Connection error', err);
+});
 
 app.use(express.static(__dirname + '/src'));
 app.use(morgan('dev'));
@@ -31,3 +34,4 @@ routes(app);
 app.listen(3000, function () {
     console.log('App listening on port 3000');
 });
+//# sourceMappingURL=server.js.map

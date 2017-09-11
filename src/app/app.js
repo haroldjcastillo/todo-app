@@ -12,9 +12,21 @@ myApp.controller('mainController', ['$scope', '$http', function ($scope, $http) 
             console.log('Error: ' + data);
         });
 
+
+    $scope.find = function () {
+        $http.get('/task')
+            .success(function (data) {
+                $scope.todos = data;
+                console.log(data);
+            })
+            .error(function (data) {
+                console.log('Error: ' + data);
+            });
+    };
+
     $scope.create = function () {
         console.log($scope.formData);
-        $http.post('/task/create', $scope.formData)
+        $http.post('/task', $scope.formData)
             .success(function (data) {
                 $scope.formData = {};
                 $scope.todos = data;
@@ -26,7 +38,7 @@ myApp.controller('mainController', ['$scope', '$http', function ($scope, $http) 
     };
 
     $scope.delete = function (id) {
-        $http.delete('/task/destroy/' + id)
+        $http.delete('/task/' + id)
             .success(function (data) {
                 $scope.todos = data;
                 console.log(data);
@@ -37,7 +49,7 @@ myApp.controller('mainController', ['$scope', '$http', function ($scope, $http) 
     };
 
     $scope.update = function (id) {
-        $http.delete('/task/update' + id)
+        $http.put('/task/' + id)
             .success(function (data) {
                 $scope.todos = data;
                 console.log(data);
@@ -48,22 +60,3 @@ myApp.controller('mainController', ['$scope', '$http', function ($scope, $http) 
     };
 
 }]);
-
-var dateTimePicker = myApp.directive('myCustomer', function() {
-    return {
-        restrict: "A",
-        require: "ngModel",
-        link: function (scope, element, attrs, ngModelCtrl) {
-            console.log(element);
-            var parent = $(element).parent();
-            var dtp = parent.datetimepicker({
-                format: "YYYY-MM-DD",
-                showTodayButton: true
-            });
-            dtp.on("dp.change", function (e) {
-                ngModelCtrl.$setViewValue(moment(e.date).format("LL"));
-                scope.$apply();
-            });
-        }
-    };
-});
