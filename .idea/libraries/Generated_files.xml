@@ -4,6 +4,7 @@
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/dist/src/app/api/controller/todo.controller.js" />
         <item url="file://$PROJECT_DIR$/dist/src/app/api/routes/todo.route.js" />
+        <item url="file://$PROJECT_DIR$/dist/src/app/app.js" />
         <item url="file://$PROJECT_DIR$/dist/src/app/api/model/todo.model.js" />
         <item url="file://$PROJECT_DIR$/dist/src/app/app.js" />
         <item url="file://$PROJECT_DIR$/dist/server.js" />
@@ -12,6 +13,11 @@
     <CLASSES>
       <root url="file://$PROJECT_DIR$/dist/src/app/api/controller/todo.controller.js" />
       <root url="file://$PROJECT_DIR$/dist/src/app/api/routes/todo.route.js" />
+      <root url="file://$PROJECT_DIR$/dist/src/app/api/model/todo.model.js" />
+      <root url="file://$PROJECT_DIR$/dist/server.js" />
+      <root url="file://$PROJECT_DIR$/dist/src/app/api/controller/todo.controller.js" />
+      <root url="file://$PROJECT_DIR$/dist/src/app/api/routes/todo.route.js" />
+      <root url="file://$PROJECT_DIR$/dist/src/app/app.js" />
       <root url="file://$PROJECT_DIR$/dist/src/app/api/model/todo.model.js" />
       <root url="file://$PROJECT_DIR$/dist/src/app/app.js" />
       <root url="file://$PROJECT_DIR$/dist/server.js" />

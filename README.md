@@ -28,3 +28,13 @@ db.createUser(
 
 ## Run the app
 
+Developer mode
+
+```
+npm run dev
+```
+
+## Example
+
+![Todo app](https://github.com/haroldjcastillo/todo-app/blob/master/doc/capture.png?raw=true "Logo Title Text 1")
+

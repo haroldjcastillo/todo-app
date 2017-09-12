@@ -13,41 +13,78 @@
     <script src="app/app.js"></script>
 
     <script type="text/javascript" src="/app/js/bootstrap-datetimepicker.min.js"></script>
-    <link rel="stylesheet" href="/app/css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" href="/app/css/bootstrap-datetimepicker.min.css"/>
+    <style>
+        .badge-notify {
+            background: red;
+            position: relative;
+            top: -20px;
+            left: -35px;
+        }
+    </style>
 </head>
 
 <body ng-controller="mainController">
-    <div>
-        <div class="container">
-            <h2>{{formData.duedate}}</h2>
-            <form>
-                <div class="form-group">
-                    <input type="text" class="form-control" id="name" placeholder="Name" ng-model="formData.name">
-                </div>
-                <div class="form-group">
-                    <textarea class="form-control" rows="5"  placeholder="Description" ng-model="formData.description"></textarea>
-                </div>
-                <div class="form-group">
-                    <div class='input-group date' id='duedate'>
-                        <input type='text' class="form-control" placeholder="yyyy-mm-dd" ng-model="formData.duedate" data-date-time-picker/>
-                        <span class="input-group-addon">
+<div>
+    <div class="container">
+        <h1><span class="label label-primary">TODO</span> app</h1>
+        <hr>
+        <button class="btn btn-default btn-lg btn-link" style="font-size:36px;">
+            <span class="glyphicon glyphicon-th-list"></span>
+        </button>
+        <span class="badge badge-notify">{{todos.length}}</span>
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" placeholder="Name" ng-model="formData.name">
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" rows="5" placeholder="Description" [ng-maxlength="10" ]
+                          ng-model="formData.description"></textarea>
+            </div>
+            <div class="form-group">
+                <div class='input-group date'>
+                    <input class="form-control" placeholder="Due date" ng-model="formData.duedate" date-time-picker/>
+                    <span class="input-group-addon" style="cursor: default;">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </span>
-                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="number" min="0" class="form-control" placeholder="Priority" ng-model="formData.priority">
-                </div>
-                <button class="btn btn-primary btn-lg" ng-click="create()">Add</button>
-            </form>
-            <div class="checkbox" ng-repeat="todo in todos">
-                <label>
-                    <input type="checkbox" ng-click="delete(todo._id)" /> {{ todo.name }}
-                </label>
             </div>
+            <div class="form-group">
+                <input type="number" min="0" class="form-control" placeholder="Priority" ng-model="formData.priority">
+            </div>
+            <button class="btn btn-primary" ng-click="create()">Add</button>
+        </form>
+        <hr/>
+        <div class="panel panel-primary">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Pending tasks</div>
+            <table class="table">
+                <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Description</td>
+                    <td>Due date</td>
+                    <td>Status</td>
+                </tr>
+                </thead>
+                <tbody ng-repeat="todo in todos">
+                <td>{{ todo.name }}</td>
+                <td>{{ todo.description }}</td>
+                <td>{{ todo.dueDate }}</td>
+                <td>{{ todo.status[0] }}</td>
+                <td>
+                    <button class="btn btn-default btn-md btn-link" ng-click="delete(todo._id)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                    <button class="btn btn-default btn-sm btn-link" ng-click="edit(todo)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </button>
+                </td>
+                </tbody>
+            </table>
         </div>
     </div>
-
+</div>
 </body>
 
 </html>

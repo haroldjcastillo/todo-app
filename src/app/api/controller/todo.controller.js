@@ -1,12 +1,12 @@
 'use strict';
 
 var mongoose = require('mongoose');
-var uuidv4 = require('uuid/v4');
+var uuid = require('uuid/v4');
 var TodoModel = mongoose.model('Todo')
 
 exports.create = function(req, res) {
     TodoModel.create({
-        id: uuidv4(),
+        id: uuid(),
         name: req.body.name,
         description: req.body.description,
         dueDate: req.body.duedate,
@@ -26,7 +26,7 @@ exports.create = function(req, res) {
     });
 };
 
-exports.find = function(req, res) {
+var find = exports.find = function(req, res) {
     TodoModel.find(function (err, todos) {
         if (err) {
             res.send(err);
@@ -39,7 +39,7 @@ exports.find = function(req, res) {
 exports.remove = function(req, res) {
     TodoModel.remove({
         _id: req.params.id
-    }, function (err, todo) {
+    }, function (err) {
         if (err) {
             res.send(err);
         }
